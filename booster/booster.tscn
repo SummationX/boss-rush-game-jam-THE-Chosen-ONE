@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8xu6oiga3edw"]
+
+[ext_resource type="Script" path="res://booster/booster.gd" id="1_orpid"]
+[ext_resource type="Texture2D" uid="uid://m2u7csqt6sxf" path="res://booster/booster-1.png" id="1_sypxl"]
+[ext_resource type="Texture2D" uid="uid://cyoy8kug33ngi" path="res://booster/booster-part-green.png" id="2_e6fqr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6h14o"]
+radius = 38.0
+
+[node name="Booster" type="Node2D"]
+script = ExtResource("1_orpid")
+
+[node name="Center" type="Sprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_sypxl")
+
+[node name="Leftside" type="Sprite2D" parent="Center"]
+position = Vector2(-32, 0)
+scale = Vector2(0.285714, 0.285714)
+texture = ExtResource("2_e6fqr")
+
+[node name="Area2D" type="Area2D" parent="Center/Leftside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Leftside/Area2D"]
+shape = SubResource("CircleShape2D_6h14o")
+
+[node name="Upside" type="Sprite2D" parent="Center"]
+position = Vector2(0, -32)
+scale = Vector2(0.285714, 0.285714)
+texture = ExtResource("2_e6fqr")
+
+[node name="Area2D" type="Area2D" parent="Center/Upside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Upside/Area2D"]
+shape = SubResource("CircleShape2D_6h14o")
+
+[node name="Rightside" type="Sprite2D" parent="Center"]
+position = Vector2(32, 0)
+scale = Vector2(0.285714, 0.285714)
+texture = ExtResource("2_e6fqr")
+
+[node name="Area2D" type="Area2D" parent="Center/Rightside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Rightside/Area2D"]
+shape = SubResource("CircleShape2D_6h14o")
+
+[node name="Downside" type="Sprite2D" parent="Center"]
+position = Vector2(0, 32)
+scale = Vector2(0.285714, 0.285714)
+texture = ExtResource("2_e6fqr")
+
+[node name="Area2D" type="Area2D" parent="Center/Downside"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Downside/Area2D"]
+shape = SubResource("CircleShape2D_6h14o")
+
+[connection signal="body_entered" from="Center/Leftside/Area2D" to="." method="_on_area_2d_body_entered_left_side"]
+[connection signal="body_entered" from="Center/Upside/Area2D" to="." method="_on_area_2d_body_entered_up_side"]
+[connection signal="body_entered" from="Center/Rightside/Area2D" to="." method="_on_area_2d_body_entered_right_side"]
+[connection signal="body_entered" from="Center/Downside/Area2D" to="." method="_on_area_2d_body_entered_down_side"]

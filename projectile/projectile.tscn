@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ho8owp8upiqg"]
+
+[ext_resource type="Texture2D" uid="uid://xuwodhgv7wil" path="res://test/projectile-test.png" id="1_3afpq"]
+[ext_resource type="Script" path="res://projectile/projectile.gd" id="1_y7xgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u57jo"]
+size = Vector2(36, 97)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_y7xgu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3afpq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_u57jo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -0.943878)
+scale = Vector2(1, 4.16198)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -73.06
+offset_right = 20.0
+offset_bottom = -50.06
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
