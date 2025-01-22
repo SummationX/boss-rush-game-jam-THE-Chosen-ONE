@@ -20,6 +20,8 @@ scale = Vector2(0.285714, 0.285714)
 texture = ExtResource("2_e6fqr")
 
 [node name="Area2D" type="Area2D" parent="Center/Leftside"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Leftside/Area2D"]
 shape = SubResource("CircleShape2D_6h14o")
@@ -30,6 +32,8 @@ scale = Vector2(0.285714, 0.285714)
 texture = ExtResource("2_e6fqr")
 
 [node name="Area2D" type="Area2D" parent="Center/Upside"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Upside/Area2D"]
 shape = SubResource("CircleShape2D_6h14o")
@@ -40,6 +44,8 @@ scale = Vector2(0.285714, 0.285714)
 texture = ExtResource("2_e6fqr")
 
 [node name="Area2D" type="Area2D" parent="Center/Rightside"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Rightside/Area2D"]
 shape = SubResource("CircleShape2D_6h14o")
@@ -50,6 +56,8 @@ scale = Vector2(0.285714, 0.285714)
 texture = ExtResource("2_e6fqr")
 
 [node name="Area2D" type="Area2D" parent="Center/Downside"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Center/Downside/Area2D"]
 shape = SubResource("CircleShape2D_6h14o")

@@ -4,17 +4,28 @@
 [ext_resource type="Texture2D" uid="uid://br770dp08kwmd" path="res://base/base.png" id="2_duvge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acv3e"]
-size = Vector2(105.167, 23.0769)
+size = Vector2(599.615, 38.5385)
 
 [node name="Base" type="Area2D" groups=["base"]]
-scale = Vector2(6, 6)
 script = ExtResource("1_5dfrf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.315, 6.315)
 texture = ExtResource("2_duvge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0833344, 39.2308)
+position = Vector2(1, 193)
 shape = SubResource("RectangleShape2D_acv3e")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+clip_contents = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -265.0
+offset_top = 140.01
+offset_right = 265.0
+offset_bottom = 167.01
+grow_horizontal = 2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

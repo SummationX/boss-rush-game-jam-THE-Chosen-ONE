@@ -17,8 +17,21 @@ texture = ExtResource("1_dpgmf")
 position = Vector2(3, -1)
 shape = SubResource("RectangleShape2D_eclc5")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="FireRateTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -116.0
+offset_top = -69.0
+offset_right = 116.0
+offset_bottom = -57.0
+max_value = 10000.0
+show_percentage = false
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 5.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]

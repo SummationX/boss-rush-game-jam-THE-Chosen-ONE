@@ -1,20 +1,20 @@
 [gd_scene load_steps=2 format=3 uid="uid://phc18ow6i7fq"]
 
-[ext_resource type="PackedScene" uid="uid://ho8owp8upiqg" path="res://projectile/projectile.tscn" id="1_6emln"]
+[ext_resource type="PackedScene" uid="uid://ho8owp8upiqg" path="res://projectile/projectile.tscn" id="1_gn7pn"]
 
 [node name="AttackPattern2" type="Node2D"]
 
-[node name="Projectile" parent="." instance=ExtResource("1_6emln")]
+[node name="Projectile" parent="." instance=ExtResource("1_gn7pn")]
 position = Vector2(0, -86)
 
-[node name="Projectile2" parent="." instance=ExtResource("1_6emln")]
+[node name="Projectile2" parent="." instance=ExtResource("1_gn7pn")]
 position = Vector2(52, -143)
 
-[node name="Projectile3" parent="." instance=ExtResource("1_6emln")]
+[node name="Projectile3" parent="." instance=ExtResource("1_gn7pn")]
 position = Vector2(-46.79, -30)
 
-[node name="Projectile4" parent="." instance=ExtResource("1_6emln")]
+[node name="Projectile4" parent="." instance=ExtResource("1_gn7pn")]
 position = Vector2(96, -195)
 
-[node name="Projectile5" parent="." instance=ExtResource("1_6emln")]
+[node name="Projectile5" parent="." instance=ExtResource("1_gn7pn")]
 position = Vector2(-96, 24.47)
