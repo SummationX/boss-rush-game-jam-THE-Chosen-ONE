@@ -2,19 +2,20 @@ extends Area2D
 class_name PROJECTILE
 
 @onready var player = $"../../../Player"
+@onready var animation = $AnimatedSprite2D
 
 var is_spawn_animation_done = false
 var damage = 10
 @onready var initial_damage = Global.projectile_damage
-var speed = 1.3
+var speed = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation.speed_scale = randf_range(0.9, 1.1)
 	damage = initial_damage
 	var direction = rotation * PI
 	set_rotation(direction)
 	update_damage()
-	print(Global.projectile_damage)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

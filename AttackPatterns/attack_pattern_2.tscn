@@ -5,16 +5,15 @@
 [node name="AttackPattern2" type="Node2D"]
 
 [node name="Projectile" parent="." instance=ExtResource("1_gn7pn")]
-position = Vector2(0, -86)
 
 [node name="Projectile2" parent="." instance=ExtResource("1_gn7pn")]
-position = Vector2(52, -143)
+position = Vector2(75, -100)
 
 [node name="Projectile3" parent="." instance=ExtResource("1_gn7pn")]
-position = Vector2(-46.79, -30)
+position = Vector2(-75, 100)
 
 [node name="Projectile4" parent="." instance=ExtResource("1_gn7pn")]
-position = Vector2(96, -195)
+position = Vector2(150, -200)
 
 [node name="Projectile5" parent="." instance=ExtResource("1_gn7pn")]
-position = Vector2(-96, 24.47)
+position = Vector2(-150, 200)
