@@ -7,7 +7,7 @@ extends Area2D
 @onready var fire_rate_timer = $FireRateTimer
 @onready var progress_bar = $ProgressBar
 @onready var attack_cooldown_timer = $AttackCooldownTimer
-
+@onready var animation = $AnimatedSprite2d
 var is_on_cooldown = false
 var vary_attack = 0
 var health : float = 5000
@@ -17,13 +17,13 @@ func _ready():
 	progress_bar.max_value = health
 	fire_projectile(n)
 	update_health(0)
-
+	animation.play()
 
 func fire_projectile(projectile):
-	var projectile_attack = projectile.instantiate()
 	if is_on_cooldown:
 		pass
 	else:
+		var projectile_attack = projectile.instantiate()
 		add_child(projectile_attack)
 		if vary_attack == 3 and n == attack_pattern_1:
 			n = attack_pattern_2
@@ -54,8 +54,11 @@ func increment_projectile_damage():
 func _on_attack_cooldown_timer_timeout():
 	is_on_cooldown = false
 	fire_rate_timer.start()
+	animation.play()
 
 func start_cooldown():
+	animation.pause()
+	animation.frame = 1
 	is_on_cooldown = true
 	attack_cooldown_timer.start()
 	
