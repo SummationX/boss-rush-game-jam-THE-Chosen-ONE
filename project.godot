@@ -27,6 +27,7 @@ window/size/viewport_height=1024
 [global_group]
 
 base=""
+projectile=""
 
 [input]
 

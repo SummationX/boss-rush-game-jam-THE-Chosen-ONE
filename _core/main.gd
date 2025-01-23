@@ -17,7 +17,8 @@ func _on_booster_on_sides_complete():
 	if current_state == state.Defend:
 		pass
 	if current_state == state.Attack:
-		current_boss.update_health(player.half_damage())
+		if !current_boss.is_dead:
+			current_boss.update_health(player.half_damage())
 
 func _input(event):
 	if Input.is_action_pressed("attack_mode"):
@@ -35,3 +36,7 @@ func _input(event):
 		damage_title.text = "Defend"
 		player.set_collision_layer_value(1, false)
 		player.set_collision_layer_value(2, true)
+
+
+func _on_boss_on_boss_death():
+	get_tree().call_group("projectile", "queue_free")

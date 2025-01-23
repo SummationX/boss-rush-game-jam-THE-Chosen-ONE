@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://i1173fouxt2i"]
+[gd_scene load_steps=19 format=3 uid="uid://i1173fouxt2i"]
 
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_hkrl1"]
 [ext_resource type="Texture2D" uid="uid://c7tjannpxit4y" path="res://boss/Boss1/Boss-sprite.png" id="2_er0s2"]
+[ext_resource type="Texture2D" uid="uid://cplqp3hdq1tdu" path="res://boss/Boss1/explosion.png" id="3_e1an1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vynux"]
 atlas = ExtResource("2_er0s2")
@@ -28,8 +29,79 @@ animations = [{
 "texture": SubResource("AtlasTexture_qyux4")
 }],
 "loop": true,
-"name": &"default",
+"name": &"boss1_animation",
 "speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhuy5"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mwld"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5j1r"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftlt7"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwe4c"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twuil"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ruo"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyn5l"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j4yd"]
+atlas = ExtResource("3_e1an1")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmsy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhuy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mwld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5j1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftlt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwe4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twuil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2ruo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyn5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j4yd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eclc5"]
@@ -39,14 +111,20 @@ size = Vector2(88.8462, 86)
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_hkrl1")
 
-[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+[node name="BossAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 6.43)
 scale = Vector2(7.135, 7.135)
 sprite_frames = SubResource("SpriteFrames_setox")
-frame_progress = 0.557431
+animation = &"boss1_animation"
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 6.43)
+scale = Vector2(7.135, 7.135)
+sprite_frames = SubResource("SpriteFrames_dmsy4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.576921, -1)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_eclc5")
 
 [node name="FireRateTimer" type="Timer" parent="."]
@@ -65,5 +143,29 @@ show_percentage = false
 process_callback = 0
 wait_time = 5.0
 
+[node name="UpPosition" type="Marker2D" parent="."]
+position = Vector2(0, -13.0769)
+
+[node name="DownPosition" type="Marker2D" parent="."]
+position = Vector2(0, 13.8462)
+
+[node name="MovementTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.7
+
+[node name="HealthText" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.853
+offset_top = -74.245
+offset_right = 21.852
+offset_bottom = -51.245
+grow_horizontal = 2
+text = "100"
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

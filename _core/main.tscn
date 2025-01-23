@@ -45,3 +45,4 @@ offset_bottom = 482.0
 text = "Defend/Increment"
 
 [connection signal="on_sides_complete" from="Booster" to="." method="_on_booster_on_sides_complete"]
+[connection signal="on_boss_death" from="Boss" to="." method="_on_boss_on_boss_death"]
