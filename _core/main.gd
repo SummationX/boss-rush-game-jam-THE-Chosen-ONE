@@ -4,13 +4,20 @@ extends Node2D
 @onready var current_boss = $Boss
 @onready var damage_title = $CanvasLayer/DamageTitle
 @onready var state_texture = $CanvasLayer/StateTexture
+@onready var power_bar = $CanvasLayer/ProgressBar
 
 var current_state
 enum state {Attack, Increment, Defend}
 
+func _process(delta):
+	power_bar.max_value = current_boss.health
+	power_bar.value = player.damage
+
+
 func _ready():
 	current_state = state.Increment
 	damage_title.text = "Incremental"
+	
 
 func _on_booster_on_sides_complete():
 	if current_state == state.Increment:

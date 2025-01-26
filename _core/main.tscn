@@ -56,5 +56,17 @@ offset_bottom = -67.0
 grow_vertical = 2
 texture = ExtResource("6_lp8nf")
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = 51.0
+offset_right = 59.0
+offset_bottom = 346.0
+grow_vertical = 2
+fill_mode = 3
+show_percentage = false
+
 [connection signal="on_sides_complete" from="Booster" to="." method="_on_booster_on_sides_complete"]
 [connection signal="on_boss_death" from="Boss" to="." method="_on_boss_on_boss_death"]

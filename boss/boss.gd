@@ -116,3 +116,4 @@ func _on_movement_timer_timeout():
 
 func _on_explosion_animation_finished():
 	explosion_animation.hide()
+	get_tree().change_scene_to_file("res://win_menu.tscn")

@@ -12,7 +12,7 @@ func _physics_process(delta):
 	position.y = lerp(position.y, get_global_mouse_position().y, speed)
 
 func update_label():
-	$"../CanvasLayer/Numbers".text = str(damage)
+	$"../CanvasLayer/Numbers".text = str(int(damage))
 
 func update_damage():
 	var increment_damage
