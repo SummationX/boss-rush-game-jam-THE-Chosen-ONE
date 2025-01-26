@@ -23,6 +23,7 @@ position = Vector2(301, 771)
 position = Vector2(317, 486)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Numbers" type="Label" parent="CanvasLayer"]
 anchors_preset = 4

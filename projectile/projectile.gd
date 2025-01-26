@@ -1,7 +1,6 @@
 extends Area2D
 class_name PROJECTILE
 
-@onready var player = $"../../../Player"
 @onready var animation = $AnimatedSprite2D
 
 var is_spawn_animation_done = false

@@ -6,8 +6,8 @@ signal on_boss_death
 @onready var health_text = $HealthText
 
 #Attack pattern
-@onready var attack_pattern_1 = load("res://AttackPatterns/attack_pattern_1.tscn")
-@onready var attack_pattern_2 = load("res://AttackPatterns/attack_pattern_2.tscn")
+@onready var attack_pattern_1 = load("res://attackpatterns/attack_pattern_1.tscn")
+@onready var attack_pattern_2 = load("res://attackpatterns/attack_pattern_2.tscn")
 @onready var n = attack_pattern_1
 
 #Projectile
@@ -53,12 +53,10 @@ func fire_projectile(projectile):
 	else:
 		var projectile_attack = projectile.instantiate()
 		projectile_attack.position = down_position.global_position
-		get_parent().add_child(projectile_attack)
-		
+		get_parent().add_child.call_deferred(projectile_attack)
 		if vary_attack == 3 and n == attack_pattern_1:
 			n = attack_pattern_2
 			vary_attack = 0
-			increment_projectile_damage()
 			start_cooldown()
 		elif vary_attack == 3 and n == attack_pattern_2:
 			n = attack_pattern_1
@@ -67,6 +65,7 @@ func fire_projectile(projectile):
 		else:
 			fire_rate_timer.start()
 			vary_attack += 1
+		increment_projectile_damage()
 
 
 func update_health(damage):
@@ -80,7 +79,7 @@ func _on_timer_timeout():
 	fire_projectile(n)
 
 func increment_projectile_damage():
-	Global.projectile_damage = Global.projectile_damage * 1.5
+	Global.projectile_damage = int(Global.projectile_damage * 1.5)
 
 func _on_attack_cooldown_timer_timeout():
 	is_on_cooldown = false
